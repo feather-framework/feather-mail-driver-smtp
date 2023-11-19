@@ -1,4 +1,4 @@
-# Feather Mail Driver Local
+# Feather Mail Driver SMTP
 
 A mail driver for the Feather CMS mail service using NIO SMTP.
 
@@ -13,13 +13,13 @@ Use at your own risk.
 To add a dependency on the package, declare it in your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/feather-framework/feather-mail-driver-local.git", .upToNextMinor(from: "0.1.0")),
+.package(url: "https://github.com/feather-framework/feather-mail-driver-smtp.git", .upToNextMinor(from: "0.1.0")),
 ```
 
 and to your application target, add `FeatherMailDriverSMTP` to your dependencies:
 
 ```swift
-.product(name: "FeatherMailDriverSMTP", package: "feather-mail-driver-local")
+.product(name: "FeatherMailDriverSMTP", package: "feather-mail-driver-smtp")
 ```
 
 Example `Package.swift` file with `FeatherMailDriverSMTP` as a dependency:
@@ -31,11 +31,11 @@ import PackageDescription
 let package = Package(
     name: "my-application",
     dependencies: [
-        .package(url: "https://github.com/feather-framework/feather-mail-driver-local.git", .upToNextMinor(from: "0.1.0")),
+        .package(url: "https://github.com/feather-framework/feather-mail-driver-smtp.git", .upToNextMinor(from: "0.1.0")),
     ],
     targets: [
         .target(name: "MyApplication", dependencies: [
-            .product(name: "FeatherMailDriverSMTP", package: "feather-mail-driver-local")
+            .product(name: "FeatherMailDriverSMTP", package: "feather-mail-driver-smtp")
         ]),
         .testTarget(name: "MyApplicationTests", dependencies: [
             .target(name: "MyApplication"),
