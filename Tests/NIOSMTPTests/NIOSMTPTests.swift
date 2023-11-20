@@ -55,7 +55,7 @@ final class NIOSMTPTests: XCTestCase {
                 .init(to)
             ],
             subject: "Test plain text email",
-            body: "This is a plain text email."
+            body: .plainText("This is a plain text email.")
         )
         try await send(email)
     }
@@ -67,8 +67,7 @@ final class NIOSMTPTests: XCTestCase {
                 .init(to)
             ],
             subject: "Test HTML email",
-            body: "This is a <b>HTML</b> email.",
-            isHtml: true
+            body: .html("This is a <b>HTML</b> email.")
         )
         try await send(email)
     }
@@ -84,7 +83,7 @@ final class NIOSMTPTests: XCTestCase {
                 .init(to)
             ],
             subject: "Test with attachment",
-            body: "This is an email with a very small attachment.",
+            body: .plainText("This is an email with a very small attachment."),
             attachments: [
                 .init(
                     name: "test.png",

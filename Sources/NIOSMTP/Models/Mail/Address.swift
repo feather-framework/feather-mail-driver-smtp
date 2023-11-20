@@ -5,7 +5,7 @@
 //  Created by Tibor Bodecs on 2020. 04. 28..
 //
 
-public struct Address {
+public struct Address: Sendable {
     public let address: String
     public let name: String?
 

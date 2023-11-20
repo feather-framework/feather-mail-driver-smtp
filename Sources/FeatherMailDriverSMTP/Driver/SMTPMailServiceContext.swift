@@ -9,14 +9,20 @@ import NIO
 import NIOSMTP
 import FeatherService
 
-struct SMTPMailServiceContext: ServiceContext {
+public struct SMTPMailServiceContext: ServiceContext {
 
     let eventLoopGroup: EventLoopGroup
-
     let smtpConfig: Configuration
-
-    func createDriver() throws -> ServiceDriver {
-        SMTPMailServiceDriver()
+    
+    public init(
+        eventLoopGroup: EventLoopGroup,
+        smtpConfig: Configuration
+    ) {
+        self.eventLoopGroup = eventLoopGroup
+        self.smtpConfig = smtpConfig
     }
 
+    public func createDriver() throws -> ServiceDriver {
+        SMTPMailServiceDriver()
+    }
 }
