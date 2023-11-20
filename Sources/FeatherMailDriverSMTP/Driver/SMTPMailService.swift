@@ -28,6 +28,18 @@ struct SMTPMailService {
     }
 }
 
+extension FeatherMail.Mail.Body {
+
+    var toNIOSMTPBody: Body {
+        switch self {
+        case .plainText(let value):
+            return .plainText(value)
+        case .html(let value):
+            return .html(value)
+        }
+    }
+}
+
 extension SMTPMailService: MailService {
 
     public func send(_ email: FeatherMail.Mail) async throws {
@@ -43,12 +55,11 @@ extension SMTPMailService: MailService {
             bcc: email.bcc.map {
                 Address($0.email, name: $0.name)
             },
-            subject: email.subject,
-            body: email.body,
-            isHtml: email.isHtml,
             replyTo: email.replyTo.map {
                 Address($0.email, name: $0.name)
             },
+            subject: email.subject,
+            body: email.body.toNIOSMTPBody,
             reference: email.reference,
             attachments: email.attachments.map {
                 Attachment(

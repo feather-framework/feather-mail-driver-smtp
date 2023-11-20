@@ -4,7 +4,10 @@ import PackageDescription
 let package = Package(
     name: "feather-mail-driver-smtp",
     platforms: [
-        .macOS(.v10_15)
+        .macOS(.v13),
+        .iOS(.v16),
+        .tvOS(.v16),
+        .watchOS(.v9),
     ],
     products: [
         .library(name: "FeatherMailDriverSMTP", targets: ["FeatherMailDriverSMTP"]),
@@ -13,7 +16,9 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log", from: "1.5.0"),
         .package(url: "https://github.com/apple/swift-nio", from: "2.62.0"),
         .package(url: "https://github.com/apple/swift-nio-ssl", from: "2.25.0"),
-        .package(url: "https://github.com/feather-framework/feather-mail.git", .upToNextMinor(from: "0.1.0")),
+        .package(url: "https://github.com/feather-framework/feather-mail",
+            .upToNextMinor(from: "0.2.0")
+        ),
     ],
     targets: [
         .target(name: "NIOSMTP", dependencies: [

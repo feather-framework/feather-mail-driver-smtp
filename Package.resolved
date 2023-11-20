@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/feather-framework/feather-mail.git",
       "state" : {
-        "revision" : "a85ec2e5d3e06f97af00c06228dc225693dbe858",
-        "version" : "0.1.2"
+        "revision" : "a6913b956b9f11e0c3eca2a9eeadc139bf3234ad",
+        "version" : "0.2.0"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/feather-framework/feather-service.git",
       "state" : {
-        "revision" : "ad5b6fa727d5de89efc3f1f2931fd0c7920c380e",
-        "version" : "0.1.0"
+        "revision" : "7e8c2c18fa353fadb1e546fb11cb0e8a7c0ddc04",
+        "version" : "0.2.0"
       }
     },
     {

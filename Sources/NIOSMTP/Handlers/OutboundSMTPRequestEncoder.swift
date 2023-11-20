@@ -26,7 +26,7 @@ final class OutboundSMTPRequestEncoder: MessageToByteEncoder {
         case .data:
             out.writeString("DATA")
         case .transferData(let email):
-            email.write(to: &out)
+            email.writeSMTPMessageToBuffer(&out)
         case .quit:
             out.writeString("QUIT")
         case .beginAuthentication:
