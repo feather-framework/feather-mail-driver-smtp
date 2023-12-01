@@ -51,11 +51,12 @@ final class FeatherMailDriverSMTPTests: XCTestCase {
                             password: self.pass
                         )
                     )
-                )
+                ),
+                id: MailServiceID.custom("smtp")
             )
 
             try await registry.run()
-            let mail = try await registry.mail()
+            let mail = try await registry.mail(MailServiceID.custom("smtp"))
 
             do {
                 let suite = MailTestSuite(mail)

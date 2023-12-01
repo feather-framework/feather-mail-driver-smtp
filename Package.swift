@@ -17,7 +17,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-nio", from: "2.62.0"),
         .package(url: "https://github.com/apple/swift-nio-ssl", from: "2.25.0"),
         .package(url: "https://github.com/feather-framework/feather-mail",
-            .upToNextMinor(from: "0.2.0")
+            .upToNextMinor(from: "0.3.0")
         ),
     ],
     targets: [

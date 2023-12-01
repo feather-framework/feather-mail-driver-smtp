@@ -22,7 +22,7 @@ public struct SMTPMailServiceContext: ServiceContext {
         self.smtpConfig = smtpConfig
     }
 
-    public func createDriver() throws -> ServiceDriver {
-        SMTPMailServiceDriver()
+    public func make() throws -> ServiceBuilder {
+        SMTPMailServiceBuilder()
     }
 }
