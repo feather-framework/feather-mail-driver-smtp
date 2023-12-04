@@ -1,20 +1,11 @@
 {
   "pins" : [
     {
-      "identity" : "feather-mail",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/feather-framework/feather-mail",
-      "state" : {
-        "revision" : "a6913b956b9f11e0c3eca2a9eeadc139bf3234ad",
-        "version" : "0.3.0"
-      }
-    },
-    {
       "identity" : "feather-service",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/feather-framework/feather-service",
       "state" : {
-        "revision" : "7e8c2c18fa353fadb1e546fb11cb0e8a7c0ddc04",
+        "revision" : "9834b3fe842b7228c66c08d0d23ec5dd7fc693cd",
         "version" : "0.3.0"
       }
     },
