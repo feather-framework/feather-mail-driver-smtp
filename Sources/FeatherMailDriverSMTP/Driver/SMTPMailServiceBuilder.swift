@@ -1,5 +1,5 @@
 //
-//  SMTPMailServiceDriver.swift
+//  SMTPMailServiceBuilder.swift
 //  FeatherMailDriverSMTP
 //
 //  Created by Tibor Bodecs on 2020. 04. 28..
@@ -8,9 +8,9 @@
 import FeatherService
 import NIOSMTP
 
-struct SMTPMailServiceDriver: ServiceDriver {
+struct SMTPMailServiceBuilder: ServiceBuilder {
 
-    func run(using config: ServiceConfig) throws -> Service {
+    func build(using config: ServiceConfig) throws -> Service {
         SMTPMailService(config: config)
     }
 }

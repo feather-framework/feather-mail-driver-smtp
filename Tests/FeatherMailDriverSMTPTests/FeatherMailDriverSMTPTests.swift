@@ -41,7 +41,7 @@ final class FeatherMailDriverSMTPTests: XCTestCase {
 
         do {
             let registry = ServiceRegistry()
-            try await registry.add(
+            try await registry.addMail(
                 SMTPMailServiceContext(
                     eventLoopGroup: eventLoopGroup,
                     smtpConfig: .init(
