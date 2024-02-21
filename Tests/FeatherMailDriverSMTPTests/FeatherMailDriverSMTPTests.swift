@@ -9,7 +9,7 @@ import NIO
 import Logging
 import Foundation
 import XCTest
-import FeatherService
+import FeatherComponent
 import FeatherMail
 import FeatherMailDriverSMTP
 import XCTFeatherMail
@@ -40,9 +40,9 @@ final class FeatherMailDriverSMTPTests: XCTestCase {
         let eventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: 1)
 
         do {
-            let registry = ServiceRegistry()
+            let registry = ComponentRegistry()
             try await registry.addMail(
-                SMTPMailServiceContext(
+                SMTPMailComponentContext(
                     eventLoopGroup: eventLoopGroup,
                     smtpConfig: .init(
                         hostname: self.host,
