@@ -1,29 +1,29 @@
 //
-//  SMTPMailService.swift
+//  SMTPMailComponent.swift
 //  FeatherMailDriverSMTP
 //
 //  Created by Tibor Bodecs on 2020. 04. 28..
 //
 
 import Foundation
-import FeatherService
+import FeatherComponent
 import FeatherMail
 import NIO
 import NIOSMTP
 
 @dynamicMemberLookup
-struct SMTPMailService {
+struct SMTPMailComponent {
 
-    let config: ServiceConfig
+    let config: ComponentConfig
 
     subscript<T>(
-        dynamicMember keyPath: KeyPath<SMTPMailServiceContext, T>
+        dynamicMember keyPath: KeyPath<SMTPMailComponentContext, T>
     ) -> T {
-        let context = config.context as! SMTPMailServiceContext
+        let context = config.context as! SMTPMailComponentContext
         return context[keyPath: keyPath]
     }
 
-    init(config: ServiceConfig) {
+    init(config: ComponentConfig) {
         self.config = config
     }
 }
@@ -40,7 +40,7 @@ extension FeatherMail.Mail.Body {
     }
 }
 
-extension SMTPMailService: MailService {
+extension SMTPMailComponent: MailComponent {
 
     public func send(_ email: FeatherMail.Mail) async throws {
 

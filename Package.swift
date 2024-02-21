@@ -14,12 +14,10 @@ let package = Package(
         .library(name: "FeatherMailDriverSMTP", targets: ["FeatherMailDriverSMTP"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-log", from: "1.5.0"),
-        .package(url: "https://github.com/apple/swift-nio", from: "2.62.0"),
-        .package(url: "https://github.com/apple/swift-nio-ssl", from: "2.25.0"),
-        .package(url: "https://github.com/feather-framework/feather-mail",
-            .upToNextMinor(from: "0.3.0")
-        ),
+        .package(url: "https://github.com/apple/swift-log", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-nio", from: "2.0.0"),
+        .package(url: "https://github.com/apple/swift-nio-ssl", from: "2.0.0"),
+        .package(url: "https://github.com/feather-framework/feather-mail", .upToNextMinor(from: "0.4.0")),
     ],
     targets: [
         .target(name: "NIOSMTP", dependencies: [

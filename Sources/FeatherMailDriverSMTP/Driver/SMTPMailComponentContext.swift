@@ -1,5 +1,5 @@
 //
-//  SMTPMailServiceContext.swift
+//  SMTPMailComponentContext.swift
 //  FeatherMailDriverSMTP
 //
 //  Created by Tibor Bodecs on 2020. 04. 28..
@@ -7,9 +7,9 @@
 
 import NIO
 import NIOSMTP
-import FeatherService
+import FeatherComponent
 
-public struct SMTPMailServiceContext: ServiceContext {
+public struct SMTPMailComponentContext: ComponentContext {
 
     let eventLoopGroup: EventLoopGroup
     let smtpConfig: Configuration
@@ -22,7 +22,7 @@ public struct SMTPMailServiceContext: ServiceContext {
         self.smtpConfig = smtpConfig
     }
 
-    public func make() throws -> ServiceBuilder {
-        SMTPMailServiceBuilder()
+    public func make() throws -> ComponentBuilder {
+        SMTPMailComponentBuilder()
     }
 }
