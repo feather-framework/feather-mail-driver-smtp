@@ -8,7 +8,7 @@
 import FeatherComponent
 import NIOSMTP
 
-struct SMTPMailComponentBuilder: ComponentBuilder {
+struct SMTPMailComponentFactory: ComponentFactory {
 
     func build(using config: ComponentConfig) throws -> Component {
         SMTPMailComponent(config: config)

@@ -8,18 +8,29 @@
 import Foundation
 import NIO
 
+/// mail object
 public struct Mail: Sendable {
 
+    /// from
     public let from: Address
+    /// to
     public let to: [Address]
+    /// cc
     public let cc: [Address]
+    /// bcc
     public let bcc: [Address]
+    /// reply to
     public let replyTo: [Address]
+    /// subject
     public let subject: String
+    /// body
     public let body: Body
+    /// reference
     public let reference: String?
+    /// attachments
     public let attachments: [Attachment]
 
+    /// mail init function
     public init(
         from: Address,
         to: [Address],

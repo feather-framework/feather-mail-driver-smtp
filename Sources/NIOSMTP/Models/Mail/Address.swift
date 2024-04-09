@@ -5,10 +5,14 @@
 //  Created by Tibor Bodecs on 2020. 04. 28..
 //
 
+/// address
 public struct Address: Sendable {
+    /// address
     public let address: String
+    /// name
     public let name: String?
 
+    /// address init function
     public init(
         _ address: String,
         name: String? = nil

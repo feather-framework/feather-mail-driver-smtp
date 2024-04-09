@@ -11,10 +11,14 @@ import Logging
 /// Send an Email with an SMTP provider
 public struct NIOSMTP: Sendable {
 
+    /// event llop group
     public let eventLoopGroup: EventLoopGroup
+    /// config
     public let config: Configuration
+    /// logger
     public let logger: Logger?
 
+    /// nio smtp init function
     public init(
         eventLoopGroup: EventLoopGroup,
         configuration: Configuration,
@@ -29,7 +33,7 @@ public struct NIOSMTP: Sendable {
     /// Send an Email with SMTP sender
     ///
     /// - Parameter email: Email struct to send
-    ///
+    /// - Throws: Sending errors
     public func send(_ email: Mail) async throws {
         let result = try await sendWithPromise(email: email).get()
         switch result {

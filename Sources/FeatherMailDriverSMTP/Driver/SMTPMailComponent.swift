@@ -22,10 +22,6 @@ struct SMTPMailComponent {
         let context = config.context as! SMTPMailComponentContext
         return context[keyPath: keyPath]
     }
-
-    init(config: ComponentConfig) {
-        self.config = config
-    }
 }
 
 extension FeatherMail.Mail.Body {
@@ -42,6 +38,7 @@ extension FeatherMail.Mail.Body {
 
 extension SMTPMailComponent: MailComponent {
 
+    /// send a new mail
     public func send(_ email: FeatherMail.Mail) async throws {
 
         let smtpMail = try Mail(
