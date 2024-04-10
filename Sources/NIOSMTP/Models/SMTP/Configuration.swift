@@ -9,13 +9,20 @@ import NIO
 
 /// Configuration for a SMTP provider
 public struct Configuration: Sendable {
+    /// hostname
     public let hostname: String
+    /// port
     public let port: Int
+    /// security
     public let security: Security
+    /// timeout
     public let timeout: TimeAmount
+    /// hello method
     public let helloMethod: HelloMethod
+    /// sign in method
     public let signInMethod: SignInMethod
 
+    /// configuration init
     public init(
         hostname: String,
         port: Int = 587,

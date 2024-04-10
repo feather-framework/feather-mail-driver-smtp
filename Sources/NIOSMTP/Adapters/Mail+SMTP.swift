@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/11/2023.
 //
@@ -9,13 +9,13 @@ import Foundation
 import NIOCore
 
 extension Mail {
-    
+
     private func createBoundary() -> String {
         UUID().uuidString
             .replacingOccurrences(of: "-", with: "")
             .lowercased()
     }
-    
+
     func writeSMTPMessageToBuffer(
         _ buffer: inout ByteBuffer
     ) {
@@ -27,7 +27,7 @@ extension Mail {
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
         let dateString = dateFormatter.string(from: date)
-        
+
         let uuid = "<\(time)\(from.address.drop { $0 != "@" })>"
         buffer.writeString("From: \(from.mime)\r\n")
         let toAddresses = to.map(\.mime).joined(separator: ", ")
@@ -57,7 +57,9 @@ extension Mail {
             if !attachments.isEmpty {
                 buffer.writeString("--\(boundary)\r\n")
             }
-            buffer.writeString("Content-Type: text/plain; charset=\"UTF-8\"\r\n")
+            buffer.writeString(
+                "Content-Type: text/plain; charset=\"UTF-8\"\r\n"
+            )
             buffer.writeString("Mime-Version: 1.0\r\n\r\n")
             buffer.writeString("\(value)\r\n\r\n")
         case .html(let value):
@@ -78,9 +80,8 @@ extension Mail {
             )
             buffer.writeString("\(attachment.data.base64EncodedString())\r\n")
         }
-    
+
         buffer.writeString("\r\n.")
     }
 
 }
-

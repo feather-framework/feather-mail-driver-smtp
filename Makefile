@@ -13,5 +13,8 @@ test-with-coverage:
 clean:
 	rm -rf .build
 
+check:
+	./scripts/run-checks.sh
+
 format:
-	swift-format -i -r ./Sources && swift-format -i -r ./Tests
+	./scripts/run-swift-format.sh --fix

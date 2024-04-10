@@ -9,11 +9,13 @@ import NIO
 import NIOSMTP
 import FeatherComponent
 
+/// smtp mail component context
 public struct SMTPMailComponentContext: ComponentContext {
 
     let eventLoopGroup: EventLoopGroup
     let smtpConfig: Configuration
-    
+
+    /// smtp mail component context init
     public init(
         eventLoopGroup: EventLoopGroup,
         smtpConfig: Configuration
@@ -22,7 +24,8 @@ public struct SMTPMailComponentContext: ComponentContext {
         self.smtpConfig = smtpConfig
     }
 
-    public func make() throws -> ComponentBuilder {
-        SMTPMailComponentBuilder()
+    /// make a new component factory
+    public func make() throws -> ComponentFactory {
+        SMTPMailComponentFactory()
     }
 }

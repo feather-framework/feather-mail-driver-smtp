@@ -7,11 +7,16 @@
 
 import Foundation
 
+/// attachment
 public struct Attachment: Sendable {
+    /// name
     public let name: String
+    /// content type
     public let contentType: String
+    /// data
     public let data: Data
 
+    /// attachment init function
     public init(
         name: String,
         contentType: String,

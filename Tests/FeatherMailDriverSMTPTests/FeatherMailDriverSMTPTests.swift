@@ -54,16 +54,13 @@ final class FeatherMailDriverSMTPTests: XCTestCase {
                 )
             )
 
-            try await registry.run()
             let mail = try await registry.mail()
 
             do {
                 let suite = MailTestSuite(mail)
                 try await suite.testAll(from: from, to: to)
-                try await registry.shutdown()
             }
             catch {
-                try await registry.shutdown()
                 throw error
             }
         }
