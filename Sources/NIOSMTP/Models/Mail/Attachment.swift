@@ -7,16 +7,20 @@
 
 import Foundation
 
-/// attachment
+/// A structure representing an email attachment.
 public struct Attachment: Sendable {
-    /// name
+    /// The name of the attachment.
     public let name: String
-    /// content type
+    /// The content type of the attachment.
     public let contentType: String
-    /// data
+    /// The data of the attachment.
     public let data: Data
 
-    /// attachment init function
+    /// Initializes the Attachment structure.
+    /// - Parameters:
+    ///   - name: The name of the attachment.
+    ///   - contentType: The content type of the attachment.
+    ///   - data: The data of the attachment.
     public init(
         name: String,
         contentType: String,

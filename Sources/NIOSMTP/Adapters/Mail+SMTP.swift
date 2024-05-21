@@ -9,13 +9,17 @@ import Foundation
 import NIOCore
 
 extension Mail {
-
+    /// Generates a boundary string for multipart messages.
     private func createBoundary() -> String {
         UUID().uuidString
             .replacingOccurrences(of: "-", with: "")
             .lowercased()
     }
 
+    /// Writes the SMTP message to the given buffer.
+    ///
+    /// - Parameters:
+    ///   - buffer: The buffer to write the message to.
     func writeSMTPMessageToBuffer(
         _ buffer: inout ByteBuffer
     ) {
@@ -83,5 +87,4 @@ extension Mail {
 
         buffer.writeString("\r\n.")
     }
-
 }

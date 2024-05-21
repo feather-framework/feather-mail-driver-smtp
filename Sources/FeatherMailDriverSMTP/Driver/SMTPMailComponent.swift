@@ -11,11 +11,14 @@ import FeatherMail
 import NIO
 import NIOSMTP
 
+/// A structure representing an SMTP mail component.
 @dynamicMemberLookup
 struct SMTPMailComponent {
 
+    /// The configuration for the component.
     let config: ComponentConfig
 
+    /// Retrieves values dynamically from the SMTP mail component context.
     subscript<T>(
         dynamicMember keyPath: KeyPath<SMTPMailComponentContext, T>
     ) -> T {
@@ -26,6 +29,7 @@ struct SMTPMailComponent {
 
 extension FeatherMail.Mail.Body {
 
+    /// Converts the body to NIOSMTP body format.
     var toNIOSMTPBody: Body {
         switch self {
         case .plainText(let value):
@@ -38,7 +42,9 @@ extension FeatherMail.Mail.Body {
 
 extension SMTPMailComponent: MailComponent {
 
-    /// send a new mail
+    /// Sends an email using SMTP.
+    /// - Parameter email: The email to send.
+    /// - Throws: An error if the email could not be sent.
     public func send(_ email: FeatherMail.Mail) async throws {
 
         let smtpMail = try Mail(

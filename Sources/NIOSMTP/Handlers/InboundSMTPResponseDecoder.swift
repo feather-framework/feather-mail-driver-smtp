@@ -7,10 +7,15 @@
 
 import NIO
 
+/// A handler for decoding inbound SMTP responses.
 final class InboundSMTPResponseDecoder: ChannelInboundHandler {
     typealias InboundIn = ByteBuffer
     typealias InboundOut = Response
 
+    /// Handles inbound data read from the channel.
+    /// - Parameters:
+    ///   - context: The channel handler context.
+    ///   - data: The inbound data.
     func channelRead(context: ChannelHandlerContext, data: NIOAny) {
         var response = unwrapInboundIn(data)
 

@@ -8,10 +8,12 @@
 import NIO
 import NIOSSL
 
+/// A handler for processing inbound SMTP responses during email sending.
 final class InboundSendEmailHandler: ChannelInboundHandler {
     typealias InboundIn = Response
     typealias OutboundOut = Request
 
+    /// Enumeration representing the expected response states.
     enum Expect {
         case initialMessageFromServer
         case okAfterHello
@@ -35,6 +37,11 @@ final class InboundSendEmailHandler: ChannelInboundHandler {
     private let promise: EventLoopPromise<Void>
     private var recipients: [Address] = []
 
+    /// Initializes the inbound send email handler.
+    /// - Parameters:
+    ///   - config: The SMTP configuration.
+    ///   - email: The email message to send.
+    ///   - promise: The promise to complete when the email sending process finishes.
     init(
         config: Configuration,
         email: Mail,
@@ -48,11 +55,13 @@ final class InboundSendEmailHandler: ChannelInboundHandler {
         self.recipients += email.bcc
     }
 
+    /// Sends a command to the SMTP server.
+    /// - Parameters:
+    ///   - context: The channel handler context.
+    ///   - command: The command to send.
     func send(context: ChannelHandlerContext, command: Request) {
         context.writeAndFlush(wrapOutboundOut(command))
-            .cascadeFailure(
-                to: promise
-            )
+            .cascadeFailure(to: promise)
     }
 
     func channelRead(context: ChannelHandlerContext, data: NIOAny) {
@@ -116,7 +125,6 @@ final class InboundSendEmailHandler: ChannelInboundHandler {
                         "After auth begin executed for anonymous sign in method"
                     )
                 )
-                break
             }
         case .okAfterUsername:
             switch config.signInMethod {
@@ -129,7 +137,6 @@ final class InboundSendEmailHandler: ChannelInboundHandler {
                         "After user name executed for anonymous sign in method"
                     )
                 )
-                break
             }
         case .okAfterPassword:
             send(

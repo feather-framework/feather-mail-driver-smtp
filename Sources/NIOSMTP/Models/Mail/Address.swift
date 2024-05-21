@@ -5,14 +5,18 @@
 //  Created by Tibor Bodecs on 2020. 04. 28..
 //
 
-/// address
+/// A structure representing an email address.
 public struct Address: Sendable {
-    /// address
+
+    /// The email address.
     public let address: String
-    /// name
+    /// The name associated with the email address.
     public let name: String?
 
-    /// address init function
+    /// Initializes the Address structure.
+    /// - Parameters:
+    ///   - address: The email address.
+    ///   - name: The name associated with the email address. Default is nil.
     public init(
         _ address: String,
         name: String? = nil
@@ -21,6 +25,7 @@ public struct Address: Sendable {
         self.name = name
     }
 
+    /// Returns the MIME representation of the email address.
     var mime: String {
         if let name {
             return "\(name) <\(address)>"

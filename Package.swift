@@ -18,6 +18,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-nio", from: "2.0.0"),
         .package(url: "https://github.com/apple/swift-nio-ssl", from: "2.0.0"),
         .package(url: "https://github.com/feather-framework/feather-mail", .upToNextMinor(from: "0.5.0")),
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0")
     ],
     targets: [
         .target(name: "NIOSMTP", dependencies: [

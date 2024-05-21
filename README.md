@@ -47,3 +47,19 @@ let package = Package(
 ## Credits 
 
 The NIOSMTP library is heavily inspired by [Mikroservices/Smtp](https://github.com/Mikroservices/Smtp).
+
+
+name: Update DocC Documentation
+script: | 
+  swift package --allow-writing-to-directory ./docs \
+    generate-documentation --target MusadoraKit \
+    --disable-indexing \
+    --transform-for-static-hosting \
+    --hosting-base-path MusadoraKit \
+    --output-path ./docs
+
+  git add .
+  git commit -m "[skip ci] Update DocC Documentation"
+  git remote set-url origin https://rudrankriyam:$token@github.com/rryam/MusadoraKit.git
+  git pull
+  git push origin main

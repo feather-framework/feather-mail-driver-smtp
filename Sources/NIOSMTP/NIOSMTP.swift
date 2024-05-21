@@ -5,20 +5,27 @@
 //  Created by Tibor Bodecs on 2020. 04. 28..
 //
 
+https://feather-framework.github.io/feather-spec/
+https://feather-framework.github.io/feather-spec/documentation/featherspec
 import NIO
 import Logging
 
-/// Send an Email with an SMTP provider
+/// Represents an SMTP client for sending emails asynchronously.
 public struct NIOSMTP: Sendable {
 
-    /// event llop group
+    /// The event loop group used for asynchronous operations.
     public let eventLoopGroup: EventLoopGroup
-    /// config
+    /// The SMTP configuration settings.
     public let config: Configuration
-    /// logger
+    /// An optional logger for logging events.
     public let logger: Logger?
 
-    /// nio smtp init function
+    /// Initializes an NIOSMTP instance.
+    ///
+    /// - Parameters:
+    ///   - eventLoopGroup: The event loop group to use for asynchronous operations.
+    ///   - configuration: The SMTP configuration settings.
+    ///   - logger: An optional logger for logging events.
     public init(
         eventLoopGroup: EventLoopGroup,
         configuration: Configuration,
@@ -29,11 +36,11 @@ public struct NIOSMTP: Sendable {
         self.logger = logger
     }
 
+    /// Sends an email asynchronously.
     ///
-    /// Send an Email with SMTP sender
-    ///
-    /// - Parameter email: Email struct to send
-    /// - Throws: Sending errors
+    /// - Parameter email: The email message to be sent.
+    /// - Throws: An error if the sending process encounters an issue.
+    /// - Returns: An event loop future indicating completion of the sending process.
     public func send(_ email: Mail) async throws {
         let result = try await sendWithPromise(email: email).get()
         switch result {
@@ -44,6 +51,10 @@ public struct NIOSMTP: Sendable {
         }
     }
 
+    /// Sends an email message with a promise.
+    ///
+    /// - Parameter email: The email message to be sent.
+    /// - Returns: An event loop future with a result indicating success or failure.
     private func sendWithPromise(
         email: Mail
     ) throws -> EventLoopFuture<Result<Bool, Error>> {

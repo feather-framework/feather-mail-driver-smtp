@@ -9,13 +9,18 @@ import NIO
 import NIOSMTP
 import FeatherComponent
 
-/// smtp mail component context
+/// A structure representing the context for the SMTP mail component.
 public struct SMTPMailComponentContext: ComponentContext {
 
+    /// The event loop group.
     let eventLoopGroup: EventLoopGroup
+    /// The SMTP configuration.
     let smtpConfig: Configuration
 
-    /// smtp mail component context init
+    /// Initializes the SMTP mail component context.
+    /// - Parameters:
+    ///   - eventLoopGroup: The event loop group.
+    ///   - smtpConfig: The SMTP configuration.
     public init(
         eventLoopGroup: EventLoopGroup,
         smtpConfig: Configuration
@@ -24,7 +29,9 @@ public struct SMTPMailComponentContext: ComponentContext {
         self.smtpConfig = smtpConfig
     }
 
-    /// make a new component factory
+    /// Creates a component factory.
+    /// - Throws: An error if the component factory cannot be created.
+    /// - Returns: A component factory.
     public func make() throws -> ComponentFactory {
         SMTPMailComponentFactory()
     }

@@ -7,13 +7,15 @@
 
 import NIOCore
 
+/// Protocol representing errors in NIOExtras.
 protocol NIOExtrasError: Equatable, Error {}
 
-/// Errors that are raised in NIOExtras.
+/// Namespace for errors in NIOExtras.
 enum NIOExtrasErrors {
 
-    /// Error indicating that after an operation some unused bytes are left.
+    /// Error type representing leftover bytes in a buffer.
     struct LeftOverBytesError: NIOExtrasError {
+        /// The leftover bytes in the buffer.
         let leftOverBytes: ByteBuffer
     }
 }

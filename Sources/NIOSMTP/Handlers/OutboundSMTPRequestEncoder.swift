@@ -8,9 +8,14 @@
 import Foundation
 import NIO
 
+/// A message-to-byte encoder for outbound SMTP requests.
 final class OutboundSMTPRequestEncoder: MessageToByteEncoder {
     typealias OutboundIn = Request
 
+    /// Encodes the outbound SMTP request into bytes.
+    /// - Parameters:
+    ///   - data: The outbound SMTP request.
+    ///   - out: The byte buffer to write the encoded bytes to.
     func encode(data: Request, out: inout ByteBuffer) {
         switch data {
         case .sayHello(serverName: let server, let helloMethod):

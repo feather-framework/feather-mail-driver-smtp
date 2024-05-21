@@ -8,6 +8,7 @@
 import NIO
 import NIOSSL
 
+/// An enumeration representing security options for SMTP communication.
 public enum Security: Sendable {
 
     /// Communication without any encryption (even password is send as a plain text).
@@ -30,10 +31,16 @@ public enum Security: Sendable {
 
 extension Security {
 
+    /// Checks if StartTLS is enabled.
     var isStartTLSEnabled: Bool {
         self == .startTLS || self == .startTLSIfAvailable
     }
 
+    /// Configures the channel for the specified security option.
+    /// - Parameters:
+    ///   - channel: The channel to configure.
+    ///   - hostname: The hostname of the server.
+    /// - Returns: An event loop future indicating the success of the configuration.
     func configureChannel(
         on channel: Channel,
         hostname: String

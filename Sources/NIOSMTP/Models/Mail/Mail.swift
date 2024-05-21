@@ -8,29 +8,40 @@
 import Foundation
 import NIO
 
-/// mail object
+/// A structure representing an email message.
 public struct Mail: Sendable {
 
-    /// from
+    /// The sender's address.
     public let from: Address
-    /// to
+    /// The primary recipient addresses.
     public let to: [Address]
-    /// cc
+    /// The carbon copy recipient addresses.
     public let cc: [Address]
-    /// bcc
+    /// The blind carbon copy recipient addresses.
     public let bcc: [Address]
-    /// reply to
+    /// The reply-to addresses.
     public let replyTo: [Address]
-    /// subject
+    /// The subject of the email.
     public let subject: String
-    /// body
+    /// The body of the email.
     public let body: Body
-    /// reference
+    /// The reference identifier (optional).
     public let reference: String?
-    /// attachments
+    /// The email attachments.
     public let attachments: [Attachment]
 
-    /// mail init function
+    /// Initializes an email message.
+    /// - Parameters:
+    ///   - from: The sender's address.
+    ///   - to: The primary recipient addresses.
+    ///   - cc: The carbon copy recipient addresses. Default is an empty array.
+    ///   - bcc: The blind carbon copy recipient addresses. Default is an empty array.
+    ///   - replyTo: The reply-to addresses. Default is an empty array.
+    ///   - subject: The subject of the email.
+    ///   - body: The body of the email.
+    ///   - reference: The reference identifier. Default is nil.
+    ///   - attachments: The email attachments. Default is an empty array.
+    /// - Throws: An error if no valid recipients are provided.
     public init(
         from: Address,
         to: [Address],

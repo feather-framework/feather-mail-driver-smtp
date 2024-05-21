@@ -8,9 +8,8 @@
 import NIO
 import NIOSSL
 
-final class StartTLSHandler: ChannelDuplexHandler,
-    RemovableChannelHandler
-{
+/// A handler responsible for initiating the StartTLS process.
+final class StartTLSHandler: ChannelDuplexHandler, RemovableChannelHandler {
     typealias InboundIn = Response
     typealias InboundOut = Response
     typealias OutboundIn = Request
@@ -20,6 +19,10 @@ final class StartTLSHandler: ChannelDuplexHandler,
     private let allDonePromise: EventLoopPromise<Void>
     private var waitingForStartTlsResponse = false
 
+    /// Initializes the StartTLS handler.
+    /// - Parameters:
+    ///   - configuration: The SMTP configuration.
+    ///   - promise: The promise to complete when the StartTLS process finishes.
     init(
         configuration: Configuration,
         promise: EventLoopPromise<Void>

@@ -7,6 +7,7 @@
 
 import NIO
 
+/// Decodes incoming data as lines delimited by a newline character.
 final class InboundLineBasedFrameDecoder: ByteToMessageDecoder {
 
     typealias InboundIn = ByteBuffer
@@ -16,6 +17,7 @@ final class InboundLineBasedFrameDecoder: ByteToMessageDecoder {
     private var lastScanOffset = 0
     private var handledLeftovers = false
 
+    /// Initializes the line-based frame decoder.
     init() {}
 
     func decode(
